@@ -2,7 +2,7 @@
   "name": "ts-nextjs-tailwind-starter",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Dancingaroundthelies/Videfly-FE-Test",
+  "homepage": "https://Dancingaroundthelies.github.io/Videfly-FE-Test",
   "scripts": {
     "dev": "next dev -p 9091",
     "build": "next build",
