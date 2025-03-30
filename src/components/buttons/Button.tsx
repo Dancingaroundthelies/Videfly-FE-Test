@@ -76,7 +76,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               isLeft ? 'mr-2' : 'ml-2',
             ])}
           >
-            <Image src={Icon} alt='icon' className='rounded-md' />
+            <Image
+              src={Icon}
+              alt='icon'
+              width={24}
+              height={24}
+              className='rounded-md'
+            />
           </div>
         );
       } else if (React.isValidElement(Icon)) {
