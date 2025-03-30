@@ -1,12 +1,19 @@
+import {
+  dynamicIconsPlugin,
+  getIconCollections,
+  iconsPlugin,
+} from '@egoist/tailwindcss-icons';
 import type { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
+  mode: 'jit',
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Inter', ...defaultTheme.fontFamily.sans],
+        primary: ['Poppins', ...defaultTheme.fontFamily.sans],
+        secondary: ['Nunito', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: {
@@ -24,6 +31,13 @@ export default {
           950: 'rgb(var(--tw-color-primary-950) / <alpha-value>)',
         },
         dark: '#222222',
+      },
+      backgroundImage: {
+        'primary-gradient': 'linear-gradient(to right, #7F52FF, #FB8570)',
+        'secondary-gradient':
+          'linear-gradient(109.89deg, #7F52FF 1.07%, #4C3199 100%)',
+        'hero-gradient':
+          'linear-gradient(315.94deg, #F1EDFD -8.05%, #B9AFF7 32.61%, #7261EF 99.96%)',
       },
       keyframes: {
         flicker: {
@@ -45,12 +59,34 @@ export default {
             backgroundPosition: '700px 0',
           },
         },
+        'infinite-scroll-left': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
         shimmer: 'shimmer 1.3s linear infinite',
+        'infinite-scroll-left': 'infinite-scroll-left 30s linear infinite',
+      },
+      boxShadow: {
+        'custom-shadow': '0px 8px 80px rgba(43, 56, 76, 0.08)',
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('tailwind-hamburgers'),
+    iconsPlugin({
+      collections: getIconCollections([
+        'solar',
+        'carbon',
+        'line-md',
+        'streamline',
+        'hugeicons',
+        'cuida',
+      ]),
+    }),
+    dynamicIconsPlugin(),
+  ],
 } satisfies Config;

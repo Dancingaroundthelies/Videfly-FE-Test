@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '@fontsource/poppins';
+@import '@fontsource/nunito';
+@import 'semantic-ui-css/semantic.min.css';
+
 :root {
   /* #region  /**=========== Primary Color =========== */
   /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
@@ -29,16 +33,8 @@
 }
 
 @layer base {
-  /* inter var - latin */
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: block;
-    src: url('/fonts/inter-var-latin.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-      U+2215, U+FEFF, U+FFFD;
+  body {
+    font-family: var(--font-poppins), sans-serif;
   }
 
   .cursor-newtab {
@@ -72,7 +68,35 @@
 
   body,
   .p {
-    @apply font-primary text-sm md:text-base;
+    @apply font-primary text-sm md:text-base text-[#545454];
+  }
+
+  body,
+  select {
+    -webkit-appearance: none !important;
+    -moz-appearance: none;
+    background-image: none;
+  }
+
+  body,
+  .select::-ms-expand {
+    display: none;
+  }
+
+  .gradients {
+    @apply font-secondary bg-primary-gradient bg-clip-text text-transparent order-first text-4xl md:text-5xl lg:text-[4rem] xl:text-7xl 2xl:text-8xl font-bold tracking-tight;
+  }
+
+  .gradient {
+    @apply font-secondary bg-primary-gradient bg-clip-text text-transparent;
+  }
+
+  .btn-gradient {
+    @apply group-hover:bg-primary-gradient group-hover:bg-clip-text group-hover:text-transparent active:bg-primary-gradient active:bg-clip-text active:text-transparent text-black font-semibold text-start text-sm md:text-base lg:text-xl;
+  }
+
+  .hero {
+    @apply bg-hero-gradient;
   }
   /* #endregion  /**======== Typography =========== */
 
@@ -114,5 +138,36 @@
   .animated-underline:hover,
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
+  }
+}
+
+@property --num-productivity {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --num-roi {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --num-hemat {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes counter {
+  from {
+    --num-productivity: 0;
+    --num-roi: 0;
+    --num-hemat: 0;
+  }
+  to {
+    --num-productivity: 70;
+    --num-roi: 50;
+    --num-hemat: 20;
   }
 }
